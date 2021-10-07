@@ -113,7 +113,7 @@ function App() {
     updateProfile(auth.currentUser, 
       {displayName: name} 
     )
-    .then(() => {
+    .then((result) => {
       // Profile updated!
       // ...
     }).catch((error) => {
