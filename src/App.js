@@ -6,13 +6,14 @@ import { useState } from 'react';
 
 function App() {
 
+  initializeAuthentication(); // call function from firebase.init.js
+
   const[name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLogin, setIsLogin] = useState(false);
 
-  initializeAuthentication();
 
   const auth = getAuth();
 
@@ -22,10 +23,7 @@ function App() {
     signInWithPopup(auth, googleProvider)
     .then((result) => {
       const user = result.user;
-
     })
-
-    
   }
 
   const handleRegistration = (e) =>{
@@ -125,8 +123,9 @@ function App() {
     
     <div className="mx-5">
 
+      {/* //google sign in button */}
       <div>
-        <button className="btn btn-primary"onClick = {handleGoogleSignIn}>Google Log in</button> 
+        <button className="btn btn-primary "onClick = {handleGoogleSignIn}>Google Log in</button> 
       </div>
       <br/> <br/> <br/>
 
@@ -136,7 +135,7 @@ function App() {
         {
           !isLogin &&
           <div className="row mb-3">
-            <label htmlFor="inputAddress" className="form-label">Name</label>
+            <label htmlFor="inputName" className="form-label">Name</label>
             <div className="col-sm-10">
               <input type="text" onBlur={handleNameChange} className="form-control" id="inputName" placeholder="Your Name"/>
             </div>     
